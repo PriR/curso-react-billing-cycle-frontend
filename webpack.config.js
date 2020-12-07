@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webapck-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
