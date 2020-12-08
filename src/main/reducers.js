@@ -1,4 +1,4 @@
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
   dashboard: () => ({ summary: { credit: 100, debt: 50 } }),
