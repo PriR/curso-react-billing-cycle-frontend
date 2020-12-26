@@ -1,9 +1,8 @@
 import React from 'react';
-import '../common/template/dependencies';
 import Header from '../common/template/header';
 import SideBar from '../common/template/sidebar';
 import Footer from '../common/template/footer';
-import Messages from '../common/msg/mensages';
+import Messages from '../common/msg/messages';
 
 export default props => (
   <div className='wrapper'>
