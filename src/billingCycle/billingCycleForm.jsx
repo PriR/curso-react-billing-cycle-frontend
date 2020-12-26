@@ -7,10 +7,23 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 
 import LabelAndInput from '../common/form/labelAndInput';
 import ItemList from './itemList';
+import Summary from './summary';
 class BillingCycleForm extends Component {
+
+  calculateSummary() {
+    const sum = (t, v) => t + v;
+    // reduce = pega array com vários elementos e reduz a um elemento
+    console.log(this.props.credits);
+    console.log(this.props.debts);
+    return {
+      sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum, 0), // caso NaN retorna 0
+      sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum, 0) 
+    }
+  }
+
   render() {
     const { handleSubmit, readOnly, credits, debts } = this.props; // handleSubmit disponível pq classe foi decorada com reduxForm
-
+    const { sumOfCredits, sumOfDebts } = this.calculateSummary();
     return (
       <form role='form' onSubmit={handleSubmit}>
         <div className='box-body'>
@@ -40,6 +53,7 @@ class BillingCycleForm extends Component {
             cols='12 4'
             placeholder='Informe o ano'
           />
+          <Summary credit={sumOfCredits} debt={sumOfDebts} />
           <ItemList
             cols='12 6'
             list={credits}
